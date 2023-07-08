@@ -331,7 +331,6 @@ fixate_format:
 			sizeof(struct spa_meta_region) * 4));
 
 	pw_stream_update_params(stream, params, 3);
-	spa_pod_dynamic_builder_clean(&b[0]);
 	spa_pod_dynamic_builder_clean(&b[1]);
 	spa_pod_dynamic_builder_clean(&b[2]);
 }
