@@ -203,7 +203,7 @@ static void pwr_handle_stream_param_changed(void *data, uint32_t id,
 	struct pw_stream *stream = cast->stream;
 	uint8_t params_buffer[3][1024];
 	struct spa_pod_dynamic_builder b[3];
-	const struct spa_pod *params[3];
+	const struct spa_pod *params[4];
 	uint32_t blocks;
 	uint32_t data_type;
 
@@ -456,7 +456,7 @@ void xdpw_pwr_enqueue_buffer(struct xdpw_screencast_instance *cast) {
 
     struct spa_meta_videotransform *vt;
 	if ((vt = spa_buffer_find_meta_data(spa_buf, SPA_META_VideoTransform, sizeof(*vt)))) {
-		vt->transform = cast->target.output->transform;
+		vt->transform = cast->target.output ? cast->target.output->transform : 0;
 		logprint(TRACE, "pipewire: transform %u", vt->transform);
 	}
 
